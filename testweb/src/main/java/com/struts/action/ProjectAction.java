@@ -17,25 +17,28 @@ import com.struts.model.ProjectModel;
 public class ProjectAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	
-	//variable for project list to show
-	private List<Projects> listofProjects;
-	//model for fill project list.
-	private ProjectModel modProject = new ProjectModel();
-	//atribute to store value of project list
-	private String selectedProject;
-	//variable for locations list to show
-	private List<Loc_Elements> listofLocations;
-	//model for fill location list.
-	private LocationsModel modLocation = new LocationsModel();
-	//atribute to store value of location list
-	private String selectedLocation;
-	//list of project location to show always on page
-	private ArrayList<ProjectLocations> projectLocationList;
-	//atribute to store value of active or no active 
-	private String selectedActive;
 
-	//get setter and getter from atributes
+	// variable for project list to show
+	private List<Projects> listofProjects;
+	// model for fill project list.
+	private ProjectModel modProject = new ProjectModel();
+	// atribute to store value of project list
+	private String selectedProject;
+	// variable for locations list to show
+	private List<Loc_Elements> listofLocations;
+	// model for fill location list.
+	private LocationsModel modLocation = new LocationsModel();
+	// atribute to store value of location list
+	private String selectedLocation;
+	// list of project location to show always on page
+	private ArrayList<ProjectLocations> projectLocationList;
+	// atribute to store value of active or no active
+	private String selectedActive;
+	private String locationvalue;
+	private String projectvalue;
+	private String activevalue;
+
+	// get setter and getter from atributes
 	public List<Projects> getListofProjects() {
 		this.listofProjects = modProject.getProjects();
 		return listofProjects;
@@ -92,45 +95,73 @@ public class ProjectAction extends ActionSupport {
 	public void setSelectedActive(String selectedActive) {
 		this.selectedActive = selectedActive;
 	}
+
+	public String getLocationvalue() {
+		return locationvalue;
+	}
+
+	public void setLocationvalue(String locationvalue) {
+		this.locationvalue = locationvalue;
+	}
 	
+	
+
+	public String getProjectvalue() {
+		return projectvalue;
+	}
+
+	public void setProjectvalue(String projectvalue) {
+		this.projectvalue = projectvalue;
+	}
+
+	public String getActivevalue() {
+		return activevalue;
+	}
+
+	public void setActivevalue(String activevalue) {
+		this.activevalue = activevalue;
+	}
+
 	public String execute() {
 
 		return SUCCESS;
 	}
-	//method to fill projectlist on load page
+
+	// method to fill projectlist on load page
 	public String initializeList() {
-		System.out.println("inicializa");
+		// System.out.println("inicializa");
 		Control c = new Control();
 		projectLocationList = (c.getAllProjectLocations());
-		System.out.println("Size " + projectLocationList.size());
+		// System.out.println("Size " + projectLocationList.size());
 		return NONE;
 	}
 
 	public void prepare() {
 
 	}
-	
-	//method to save project location selected of no select ones do not save anything
+
+	// method to save project location selected of no select ones do not save
+	// anything
 	public String save() {
-		Control c = new Control();	
+		Control c = new Control();
 		if (!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
 			boolean execute = c.saveProjectLocation(selectedProject, selectedLocation, selectedActive);
 		}
-		//when save works , list all projectlocation again to refresh.
+		// when save works , list all projectlocation again to refresh.
 		projectLocationList = (c.getAllProjectLocations());
 
 		return SUCCESS;
 	}
-	
-	//method to delete a value of projectlocation 
+
+	// method to delete a value of projectlocation
 	public String delete() {
 		System.out.println("delete");
 		String paramValue = ServletActionContext.getRequest().getParameter("idvalue");
 		System.out.println("value " + paramValue);
 		Control c = new Control();
-		//if parameter dont have anything do not delete
+		// if parameter dont have anything do not delete
 		if (paramValue.length() > 0) {
-			//find project location before delete.
+			// find project location before delete.
 			if (c.findProjectLocations(Integer.parseInt(paramValue)) != null) {
 				if (c.deleteProjectLocation(Integer.parseInt(paramValue))) {
 
@@ -138,6 +169,12 @@ public class ProjectAction extends ActionSupport {
 			}
 		}
 		projectLocationList = (c.getAllProjectLocations());
+		return SUCCESS;
+	}
+
+	public String clear() {
+		locationvalue = "-1";
+		this.listofProjects = modProject.getProjects();
 		return SUCCESS;
 	}
 

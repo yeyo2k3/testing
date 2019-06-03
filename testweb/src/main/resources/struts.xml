@@ -14,10 +14,13 @@
 			<result name="success">/projects.jsp</result>
 		</action>
 		
-		<action name="actionClearProjects" class="com.struts.action.ProjectAction" method="delete">
+		<action name="actionDeleteProjects" class="com.struts.action.ProjectAction" method="delete">
 			<result name="success">/projects.jsp</result>
 		</action>
 		
+		<action name="actionClearProjects" class="com.struts.action.ProjectAction" method="clear">
+			<result name="success">/projects.jsp</result>
+		</action>
 				
 	</package>
 
