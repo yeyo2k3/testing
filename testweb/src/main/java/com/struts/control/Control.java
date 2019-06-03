@@ -141,5 +141,24 @@ public class Control {
 		}
 		return lobj;
 	}
+	public boolean saveProjectLocation(String project_id,String location_id,String active) {
+		Connection conn = null;
+		boolean execute=false;
+		try {
+			conn = connmgr.getConnection();
+			execute=projectlocDao.saveProjectLocation(Integer.parseInt(project_id), Integer.parseInt(location_id),Integer.parseInt(active) , conn);
+		} catch (Exception e) {
+			
+		}finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+
+			}
+		}
+		return execute;
+	}
 
 }

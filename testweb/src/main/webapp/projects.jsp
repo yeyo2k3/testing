@@ -18,6 +18,10 @@
 				<td><s:select label="Project" headerKey="-1"
 						headerValue="--- Select Project---" list="listofProjects"
 						listKey="id" listValue="project_title" name="selectedProject" />
+				</td>
+			</tr>
+			<tr>
+				<td><s:submit value="Save"/></td>
 			</tr>
 		</table>
 		<table border="1" width="100%" cellpadding="2" cellspacing="1">
@@ -27,6 +31,7 @@
 					<td>Project</td>
 					<td>Location</td>
 					<td>Active?</td>
+					<td>Delete</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +41,9 @@
 						<td><s:property value="project.getProject_title" /></td>
 						<td><s:property value="location.name" /></td>
 						<td><s:property value="active" /></td>
+						<td><a href="actionClearProjects.action?delete=<s:property value="id"/>">
+								Delete
+							</a></td>
 					</tr>
 				</s:iterator>
 

@@ -45,9 +45,10 @@ public class ProjectLocationsDao {
 			ps.setInt(1,projectid);
 			ps.setInt(2, locationid);
 			ps.setInt(3,active );
-			rs=ps.executeQuery();
+			ps.executeUpdate();
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			complete=false;
 			
 		}finally {
@@ -73,7 +74,7 @@ public class ProjectLocationsDao {
 		try {
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1,id);			
-			rs=ps.executeQuery();
+			ps.executeUpdate();
 			
 		} catch (Exception e) {
 			complete=false;

@@ -3,6 +3,8 @@ package com.struts.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.dispatcher.Parameter.Request;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.struts.control.Control;
 import com.struts.entity.Loc_Elements;
@@ -15,10 +17,10 @@ public class ProjectAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Projects> listofProjects = new ArrayList<Projects>();
+	private List<Projects> listofProjects;
 	private ProjectModel modProject = new ProjectModel();
 	private String selectedProject;
-	private List<Loc_Elements> listofLocations = new ArrayList<Loc_Elements>();
+	private List<Loc_Elements> listofLocations;
 	private LocationsModel modLocation = new LocationsModel();
 	private String selectedLocation;
 	private ArrayList<ProjectLocations> projectLocationList;
@@ -53,7 +55,7 @@ public class ProjectAction extends ActionSupport {
 
 	public ProjectAction() {
 		super();
-		
+
 	}
 
 	public String getSelectedProject() {
@@ -63,7 +65,6 @@ public class ProjectAction extends ActionSupport {
 	public void setSelectedProject(String selectedProject) {
 		this.selectedProject = selectedProject;
 	}
-	
 
 	public ArrayList<ProjectLocations> getProjectLocationList() {
 		return projectLocationList;
@@ -72,22 +73,58 @@ public class ProjectAction extends ActionSupport {
 	public void setProjectLocationList(ArrayList<ProjectLocations> projectLocationList) {
 		this.projectLocationList = projectLocationList;
 	}
+	
+	
+
+	
+	
+	public String submit() throws Exception {
+	    // submit button logic here
+	    return SUCCESS;
+	}
+	 
+	public String clear() throws Exception {
+	    // clear button logic here
+	    return SUCCESS;
+	}
 
 	public String execute() {
 		
 		return SUCCESS;
 	}
-	
-	public String initializeList(){
+
+	public String initializeList() {
 		System.out.println("inicializa");
-		Control c=new Control();
-		projectLocationList=(c.getAllProjectLocations());
-		System.out.println("Size "+projectLocationList.size());
+		Control c = new Control();
+		projectLocationList = (c.getAllProjectLocations());
+		System.out.println("Size " + projectLocationList.size());
 		return NONE;
-	}	
-	
+	}
+
 	public void prepare() {
-	
+
+	}
+
+	public String save() {
+		Control c = new Control();
+		
+		System.out.println("selectedLocation " + selectedLocation);
+		System.out.println("selectedProject " + selectedProject);
+		if(!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
+			boolean execute=c.saveProjectLocation(selectedProject, selectedLocation, "1");
+		}
+		
+		projectLocationList = (c.getAllProjectLocations());
+				
+		return SUCCESS;
+	}
+
+	public String delete() {
+		System.out.println("delete");
+		
+		Control c = new Control();
+		projectLocationList = (c.getAllProjectLocations());
+		return SUCCESS;
 	}
 
 }
