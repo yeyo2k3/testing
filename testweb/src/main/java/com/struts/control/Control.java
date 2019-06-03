@@ -160,5 +160,45 @@ public class Control {
 		}
 		return execute;
 	}
+	
+	public ProjectLocations findProjectLocations(int id) {
+		Connection conn = null;
+		ProjectLocations obj=null;
+		try {
+			conn = connmgr.getConnection();
+			obj=projectlocDao.getProjectLocation(id, conn);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+
+			}
+		}
+		return obj;
+	}
+	public boolean deleteProjectLocation(int id) {
+		Connection conn = null;
+		boolean execute=false;
+		try {
+			conn = connmgr.getConnection();
+			execute=projectlocDao.deleteProjectLocation(id, conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+
+			}
+		}
+		return execute;
+	}
 
 }

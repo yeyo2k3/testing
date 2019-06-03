@@ -3,6 +3,7 @@ package com.struts.action;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.Parameter.Request;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,6 +25,7 @@ public class ProjectAction extends ActionSupport {
 	private LocationsModel modLocation = new LocationsModel();
 	private String selectedLocation;
 	private ArrayList<ProjectLocations> projectLocationList;
+	private String selectedActive;
 
 	public List<Projects> getListofProjects() {
 		this.listofProjects = modProject.getProjects();
@@ -73,23 +75,17 @@ public class ProjectAction extends ActionSupport {
 	public void setProjectLocationList(ArrayList<ProjectLocations> projectLocationList) {
 		this.projectLocationList = projectLocationList;
 	}
-	
-	
 
-	
-	
-	public String submit() throws Exception {
-	    // submit button logic here
-	    return SUCCESS;
+	public String getSelectedActive() {
+		return selectedActive;
 	}
-	 
-	public String clear() throws Exception {
-	    // clear button logic here
-	    return SUCCESS;
+
+	public void setSelectedActive(String selectedActive) {
+		this.selectedActive = selectedActive;
 	}
 
 	public String execute() {
-		
+
 		return SUCCESS;
 	}
 
@@ -107,22 +103,31 @@ public class ProjectAction extends ActionSupport {
 
 	public String save() {
 		Control c = new Control();
-		
+
 		System.out.println("selectedLocation " + selectedLocation);
 		System.out.println("selectedProject " + selectedProject);
-		if(!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
-			boolean execute=c.saveProjectLocation(selectedProject, selectedLocation, "1");
+		System.out.println("selectedActive " + selectedActive);
+		if (!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
+			boolean execute = c.saveProjectLocation(selectedProject, selectedLocation, selectedActive);
 		}
-		
+
 		projectLocationList = (c.getAllProjectLocations());
-				
+
 		return SUCCESS;
 	}
 
 	public String delete() {
 		System.out.println("delete");
-		
+		String paramValue = ServletActionContext.getRequest().getParameter("idvalue");
+		System.out.println("value " + paramValue);
 		Control c = new Control();
+		if (paramValue.length() > 0) {
+			if (c.findProjectLocations(Integer.parseInt(paramValue)) != null) {
+				if (c.deleteProjectLocation(Integer.parseInt(paramValue))) {
+
+				}
+			}
+		}
 		projectLocationList = (c.getAllProjectLocations());
 		return SUCCESS;
 	}
