@@ -1,0 +1,5 @@
+com\struts\dao\ProjectLocationsDao.class
+com\struts\dao\LocationsDao.class
+com\struts\action\ProjectAction.class
+Util\ConnectionManager.class
+com\struts\dao\ProjectDao.class
