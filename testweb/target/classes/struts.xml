@@ -8,18 +8,18 @@
 	<package name="default" namespace="/" extends="struts-default">
 		 <action name="initializeList" 
              class="com.struts.action.ProjectAction" method="initializeList">
-			<result name="none">/projects.jsp</result>
+			<result name="none">/projectsLocations.jsp</result>
 	   </action>
 		<action name="actionlistingProjects" class="com.struts.action.ProjectAction" method="save" >
-			<result name="success">/projects.jsp</result>
+			<result name="success">/projectsLocations.jsp</result>
 		</action>
 		
 		<action name="actionDeleteProjects" class="com.struts.action.ProjectAction" method="delete">
-			<result name="success">/projects.jsp</result>
+			<result name="success">/projectsLocations.jsp</result>
 		</action>
 		
 		<action name="actionClearProjects" class="com.struts.action.ProjectAction" method="clear">
-			<result name="success">/projects.jsp</result>
+			<result name="success">/projectsLocations.jsp</result>
 		</action>
 				
 	</package>
