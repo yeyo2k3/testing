@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import com.struts.entity.Loc_Elements;
 
-
+//class to controls locations list on database
 public class LocationsDao {
 	
 	public ArrayList<Loc_Elements> findLocationsList(Connection conn){

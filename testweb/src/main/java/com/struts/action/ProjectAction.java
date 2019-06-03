@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.dispatcher.Parameter.Request;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.struts.control.Control;
@@ -14,19 +13,29 @@ import com.struts.entity.Projects;
 import com.struts.model.LocationsModel;
 import com.struts.model.ProjectModel;
 
+//action class for controls of jsp page extends action support for struts2 use
 public class ProjectAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	//variable for project list to show
 	private List<Projects> listofProjects;
+	//model for fill project list.
 	private ProjectModel modProject = new ProjectModel();
+	//atribute to store value of project list
 	private String selectedProject;
+	//variable for locations list to show
 	private List<Loc_Elements> listofLocations;
+	//model for fill location list.
 	private LocationsModel modLocation = new LocationsModel();
+	//atribute to store value of location list
 	private String selectedLocation;
+	//list of project location to show always on page
 	private ArrayList<ProjectLocations> projectLocationList;
+	//atribute to store value of active or no active 
 	private String selectedActive;
 
+	//get setter and getter from atributes
 	public List<Projects> getListofProjects() {
 		this.listofProjects = modProject.getProjects();
 		return listofProjects;
@@ -83,12 +92,12 @@ public class ProjectAction extends ActionSupport {
 	public void setSelectedActive(String selectedActive) {
 		this.selectedActive = selectedActive;
 	}
-
+	
 	public String execute() {
 
 		return SUCCESS;
 	}
-
+	//method to fill projectlist on load page
 	public String initializeList() {
 		System.out.println("inicializa");
 		Control c = new Control();
@@ -100,28 +109,28 @@ public class ProjectAction extends ActionSupport {
 	public void prepare() {
 
 	}
-
+	
+	//method to save project location selected of no select ones do not save anything
 	public String save() {
-		Control c = new Control();
-
-		System.out.println("selectedLocation " + selectedLocation);
-		System.out.println("selectedProject " + selectedProject);
-		System.out.println("selectedActive " + selectedActive);
+		Control c = new Control();	
 		if (!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
 			boolean execute = c.saveProjectLocation(selectedProject, selectedLocation, selectedActive);
 		}
-
+		//when save works , list all projectlocation again to refresh.
 		projectLocationList = (c.getAllProjectLocations());
 
 		return SUCCESS;
 	}
-
+	
+	//method to delete a value of projectlocation 
 	public String delete() {
 		System.out.println("delete");
 		String paramValue = ServletActionContext.getRequest().getParameter("idvalue");
 		System.out.println("value " + paramValue);
 		Control c = new Control();
+		//if parameter dont have anything do not delete
 		if (paramValue.length() > 0) {
+			//find project location before delete.
 			if (c.findProjectLocations(Integer.parseInt(paramValue)) != null) {
 				if (c.deleteProjectLocation(Integer.parseInt(paramValue))) {
 

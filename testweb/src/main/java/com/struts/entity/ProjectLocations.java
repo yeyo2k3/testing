@@ -1,9 +1,13 @@
 package com.struts.entity;
 
 public class ProjectLocations {
+	//projecto location auto id
 	private int id;
+	//object to identify project atributes
 	private Projects project;
+	//object to identify location atributes
 	private Loc_Elements location;
+	//active yes or no
 	private int active;
 	public int getId() {
 		return id;
@@ -34,6 +38,8 @@ public class ProjectLocations {
 	public ProjectLocations() {
 		super();
 	}
+	
+	
 	
 	
 }

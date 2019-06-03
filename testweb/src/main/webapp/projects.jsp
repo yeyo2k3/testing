@@ -39,6 +39,7 @@
 					<td>ID</td>
 					<td>Project</td>
 					<td>Location</td>
+					<td>Location type</td>
 					<td>Active?</td>
 					<td>Delete</td>
 				</tr>
@@ -49,6 +50,7 @@
 						<td><s:property  value="id" /></td>
 						<td><s:property value="project.getProject_title" /></td>
 						<td><s:property value="location.name" /></td>
+						<td><s:property value="location.loc_element_type.name" /></td>
 						<s:if test='%{active=="0"}'>
 							<td>No</td>
 						</s:if>

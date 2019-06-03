@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.struts.entity.Projects;
 
+//class to controls project list on database
 public class ProjectDao {
 	public ArrayList<Projects>findProjectList(Connection conn){
 		 ArrayList<Projects> lobj=new ArrayList<Projects>();

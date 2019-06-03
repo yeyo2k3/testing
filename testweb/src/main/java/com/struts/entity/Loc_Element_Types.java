@@ -1,8 +1,11 @@
 package com.struts.entity;
 
 public class Loc_Element_Types {
+	//id element type
 	private int id;
+	//element type descripction
 	private String name;
+	//active yes or no
 	private int active;
 	public int getId() {
 		return id;
@@ -31,6 +34,13 @@ public class Loc_Element_Types {
 	public Loc_Element_Types() {
 		super();
 	}
+	public Loc_Element_Types(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
+	
 	
 	
 }

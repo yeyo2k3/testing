@@ -4,11 +4,11 @@ package com.struts.entity;
 
 public class Projects {
 	
-	/**
-	 * 
-	 */
+	//project id
 	private int id;
+	//project name
 	private String project_title;
+	//active yes or no
 	private int active;
 	public Projects(int id, String project_title, int active) {
 		super();

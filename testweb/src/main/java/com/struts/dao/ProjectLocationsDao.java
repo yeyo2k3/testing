@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import com.struts.entity.Loc_Element_Types;
 import com.struts.entity.Loc_Elements;
 import com.struts.entity.ProjectLocations;
 import com.struts.entity.Projects;
 
 public class ProjectLocationsDao {
-	//CRUD method for relationship with projects and Locations 
-	
+	//CRUD method for relationship with projects and Locations 	
 	public ProjectLocations getProjectLocation(int id, Connection conn) {
 		ProjectLocations obj=null;
 		String sql="SELECT * FROM project_locations WHERE id=?";
@@ -127,9 +127,10 @@ public class ProjectLocationsDao {
 		ArrayList<ProjectLocations> lobj=new ArrayList<>();
 		PreparedStatement ps=null;	
 		ResultSet rs=null;
-		String sql="SELECT project_locations.*,project_title,name FROM project_locations "
+		String sql="SELECT project_locations.*,project_title,loc_elements.name,loc_element_types.id as idtype,loc_element_types.name as nametype FROM project_locations "
 				+ "INNER JOIN projects ON projects.id=project_locations.project_id "
-				+ "INNER JOIN loc_elements ON loc_elements.id=project_locations.loc_element_id ";
+				+ "INNER JOIN loc_elements ON loc_elements.id=project_locations.loc_element_id "
+				+ "INNER JOIN loc_element_types ON loc_element_types.id=loc_elements.element_type_id ";
 		ProjectLocations obj=null;
 		try {
 			ps=conn.prepareStatement(sql);			
@@ -138,8 +139,9 @@ public class ProjectLocationsDao {
 				obj=new ProjectLocations();
 				obj.setId(rs.getInt("id"));
 				obj.setProject(new Projects(rs.getInt("project_id"),rs.getString("project_title"),0));
-				obj.setLocation(new Loc_Elements(rs.getInt("loc_element_id"), rs.getString("name")));
+				obj.setLocation(new Loc_Elements(rs.getInt("loc_element_id"), rs.getString("name"),new Loc_Element_Types(rs.getInt("idtype"), rs.getString("nametype"))));
 				obj.setActive(rs.getInt("is_active"));
+			
 				lobj.add(obj);
 			}
 		} catch (Exception e) {
