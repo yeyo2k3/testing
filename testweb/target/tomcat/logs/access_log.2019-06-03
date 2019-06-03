@@ -169,3 +169,12 @@
 0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:01:13 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 87571 http-bio-8084-exec-4 222
 0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:01:26 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 87919 http-bio-8084-exec-5 321
 0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:02:14 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 88322 http-bio-8084-exec-6 310
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:31:27 -0500] "GET /testweb HTTP/1.1" 302 - http-bio-8084-exec-1 0
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:31:28 -0500] "GET /testweb/ HTTP/1.1" 200 245 http-bio-8084-exec-2 130
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:31:30 -0500] "GET /testweb/initializeList.action HTTP/1.1" 200 87704 http-bio-8084-exec-3 2147
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:31:44 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 88203 http-bio-8084-exec-4 293
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:32:20 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 88119 http-bio-8084-exec-5 429
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:32:30 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 88564 http-bio-8084-exec-6 232
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:32:37 -0500] "POST /testweb/actionlistingProjects.action HTTP/1.1" 200 88468 http-bio-8084-exec-7 195
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:32:44 -0500] "GET /testweb/actionDeleteProjects.action?idvalue=2528 HTTP/1.1" 200 88273 http-bio-8084-exec-8 309
+0:0:0:0:0:0:0:1 - - [03/Jun/2019:18:33:11 -0500] "GET /testweb/actionDeleteProjects.action?idvalue=2554 HTTP/1.1" 200 87883 http-bio-8084-exec-9 267
