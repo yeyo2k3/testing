@@ -62,8 +62,12 @@ body {
 					<td><s:submit value="Save" /> <s:submit
 							action="actionClearProjects" value="Clear" /></td>
 				</tr>
+				<tr>
+					<td colspan="3"><s:actionmessage /></td>
+				</tr>
 			</tbody>
 		</table>
+		
 		<table id="customers" width="100%" cellpadding="2" cellspacing="1">
 			<thead>
 				<tr>

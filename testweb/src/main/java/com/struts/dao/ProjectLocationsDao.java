@@ -130,7 +130,7 @@ public class ProjectLocationsDao {
 		String sql="SELECT project_locations.*,project_title,loc_elements.name,loc_element_types.id as idtype,loc_element_types.name as nametype FROM project_locations "
 				+ "INNER JOIN projects ON projects.id=project_locations.project_id "
 				+ "INNER JOIN loc_elements ON loc_elements.id=project_locations.loc_element_id "
-				+ "INNER JOIN loc_element_types ON loc_element_types.id=loc_elements.element_type_id ";
+				+ "INNER JOIN loc_element_types ON loc_element_types.id=loc_elements.element_type_id order by id desc";
 		ProjectLocations obj=null;
 		try {
 			ps=conn.prepareStatement(sql);			

@@ -146,6 +146,9 @@ public class ProjectAction extends ActionSupport {
 		Control c = new Control();
 		if (!selectedProject.equals("-1") && !selectedProject.equals("-1")) {
 			boolean execute = c.saveProjectLocation(selectedProject, selectedLocation, selectedActive);
+			if(execute) {
+				addActionMessage("Project Location saved");
+			}
 		}
 		// when save works , list all projectlocation again to refresh.
 		projectLocationList = (c.getAllProjectLocations());
@@ -155,26 +158,27 @@ public class ProjectAction extends ActionSupport {
 
 	// method to delete a value of projectlocation
 	public String delete() {
-		System.out.println("delete");
+		//System.out.println("delete");
 		String paramValue = ServletActionContext.getRequest().getParameter("idvalue");
-		System.out.println("value " + paramValue);
+		//System.out.println("value " + paramValue);
 		Control c = new Control();
 		// if parameter dont have anything do not delete
 		if (paramValue.length() > 0) {
 			// find project location before delete.
 			if (c.findProjectLocations(Integer.parseInt(paramValue)) != null) {
 				if (c.deleteProjectLocation(Integer.parseInt(paramValue))) {
-
+					addActionMessage("Project Location deleted");
 				}
 			}
 		}
 		projectLocationList = (c.getAllProjectLocations());
 		return SUCCESS;
 	}
-
+	//method to clear list
 	public String clear() {
 		locationvalue = "-1";
-		this.listofProjects = modProject.getProjects();
+		projectvalue = "-1";
+		activevalue = "-1";
 		return SUCCESS;
 	}
 
