@@ -1,5 +1,13 @@
+com\struts\model\ProjectModel.class
+com\struts\action\ProjectEditAction.class
 com\struts\dao\ProjectLocationsDao.class
 com\struts\dao\LocationsDao.class
+com\struts\entity\Projects.class
+com\struts\model\LocationsModel.class
+com\struts\control\Control.class
 com\struts\action\ProjectAction.class
+com\struts\entity\ProjectLocations.class
 Util\ConnectionManager.class
+com\struts\entity\Loc_Element_Types.class
 com\struts\dao\ProjectDao.class
+com\struts\entity\Loc_Elements.class

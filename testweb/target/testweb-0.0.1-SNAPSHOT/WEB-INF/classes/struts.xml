@@ -4,13 +4,39 @@
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-	<constant name="struts.devMode" value="true" />
+
 	<package name="default" namespace="/" extends="struts-default">
-	
-		<action name="ActionlistingProjects" class="com.struts.action.ProjectAction" >
+		<action name="initializeList"
+			class="com.struts.action.ProjectAction" method="initializeList">
+			<result name="none">/projectsLocations.jsp</result>
+		</action>
+		<action name="actionlistingProjects"
+			class="com.struts.action.ProjectAction" method="save">
+			<result name="success">/projectsLocations.jsp</result>
+		</action>
+
+		<action name="actionDeleteProjects"
+			class="com.struts.action.ProjectAction" method="delete">
+			<result name="success">/projectsLocations.jsp</result>
+		</action>
+
+		<action name="actionClearProjects"
+			class="com.struts.action.ProjectAction" method="clear">
+			<result name="success">/projectsLocations.jsp</result>
+		</action>
+		<action name="actionEditProjects"
+			class="com.struts.action.ProjectEditAction" method="save">
 			<result name="success">/projects.jsp</result>
 		</action>
-				
+		<action name="actionClearEditProjects"
+			class="com.struts.action.ProjectEditAction" method="clear">
+			<result name="success">/projects.jsp</result>
+		</action>
+		<action name="initializeEdit"
+			class="com.struts.action.actionClearEditProjects"
+			method="initializeList">
+			<result name="none">/projects.jsp</result>
+		</action>
 	</package>
 
 </struts>
