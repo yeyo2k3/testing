@@ -16,15 +16,21 @@ import com.struts.entity.Projects;
 
 import Util.ConnectionManager;
 
+//control class to improve connection to database and implements dao calls to execute CRUD from any tables
 public class Control {
 	Locale loc = Locale.getDefault();
 	ConnectionManager connmgr;
+	//dao locations
 	LocationsDao locationsDao;
+	//dao Projects
 	ProjectDao projectDao;
+	//dao Projects locations
 	ProjectLocationsDao projectlocDao;
 
 	public Control() {
+		//init driver that configure on config.ini
 		initDriver();
+		//intializate daos
 		initDao();
 
 	}
@@ -36,6 +42,7 @@ public class Control {
 	}
 
 	private void initDriver() {
+		//search configuration file to setup database connections
 		String driver = "";
 		String host = "";
 		String db = "";
@@ -67,6 +74,7 @@ public class Control {
 								linea = linea.substring(linea.indexOf(',') + 1);
 								if (linea.contains(",")) {
 									password = linea.substring(0, linea.indexOf(','));
+									
 								}
 							}
 						}

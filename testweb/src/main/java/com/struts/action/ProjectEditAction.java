@@ -8,11 +8,15 @@ import com.struts.entity.Projects;
 
 public class ProjectEditAction extends ActionSupport {
 	/**
-	 * 
+	 * Class for control modify project title 
 	 */
 	private static final long serialVersionUID = 1L;
+	//project id
 	private String project_id;
+	//project title
 	private String project_name;
+	
+	//getter and setter for action controls
 	public String getProject_id() {
 		return project_id;
 	}
@@ -25,10 +29,9 @@ public class ProjectEditAction extends ActionSupport {
 	public void setProject_name(String project_name) {
 		this.project_name = project_name;
 	}
-
+	//metod to obtain value of request when clicks son id project to modify title
 	public String initializeList() {
-		project_id= ServletActionContext.getRequest().getParameter("idproject");
-		System.out.println(""+project_id);
+		project_id= ServletActionContext.getRequest().getParameter("idproject");		
 		Control c=new Control();
 		Projects obj=c.getProject(Integer.parseInt(project_id));
 		if(obj!=null) {
@@ -38,12 +41,13 @@ public class ProjectEditAction extends ActionSupport {
 	}
 	
 	public String clear() {
-		System.out.println("Salir");
+		
 		return SUCCESS;
 	}
 	
+	//Method to save a new project title 
 	public String save() {
-		System.out.println("Save");
+		
 		Control c=new Control();
 		Projects obj=c.getProject(Integer.parseInt(project_id));
 		if(obj!=null) {

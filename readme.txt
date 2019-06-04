@@ -4,5 +4,7 @@ Configuration
 3. Complete file with paremeters separated by coma that need to connect a mysql database
 	1.Driver 
 	2.urlhost
-	3.user
-	4.password
+	3.db
+	4.user
+	5.password
+	6.optional (Blank)
