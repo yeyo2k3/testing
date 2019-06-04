@@ -48,7 +48,7 @@ public class ProjectEditAction extends ActionSupport {
 		Projects obj=c.getProject(Integer.parseInt(project_id));
 		if(obj!=null) {
 			if(c.updateProject(Integer.parseInt(project_id), project_name)) {
-				addActionMessage("Project Edited");
+				addActionMessage("Project Edited"); 
 			}
 		}
 		return SUCCESS;
