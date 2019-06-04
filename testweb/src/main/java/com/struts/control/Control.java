@@ -73,8 +73,7 @@ public class Control {
 								user = linea.substring(0, linea.indexOf(','));
 								linea = linea.substring(linea.indexOf(',') + 1);
 								if (linea.contains(",")) {
-									password = linea.substring(0, linea.indexOf(','));
-									
+									password = linea.substring(0, linea.indexOf(','));									
 								}
 							}
 						}
