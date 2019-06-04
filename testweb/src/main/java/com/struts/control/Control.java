@@ -85,7 +85,7 @@ public class Control {
 		ArrayList<Projects> lobj = new ArrayList<Projects>();
 		try {
 			conn = connmgr.getConnection();
-			lobj=projectDao.findProjectList(conn);
+			lobj = projectDao.findProjectList(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -100,13 +100,13 @@ public class Control {
 		return lobj;
 
 	}
-	
-	public ArrayList<Loc_Elements> findLocationsList(){
+
+	public ArrayList<Loc_Elements> findLocationsList() {
 		Connection conn = null;
 		ArrayList<Loc_Elements> lobj = new ArrayList<Loc_Elements>();
 		try {
 			conn = connmgr.getConnection();
-			lobj=locationsDao.findLocationsList(conn);
+			lobj = locationsDao.findLocationsList(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -121,13 +121,13 @@ public class Control {
 		return lobj;
 
 	}
-	
-	public ArrayList<ProjectLocations> getAllProjectLocations(){
+
+	public ArrayList<ProjectLocations> getAllProjectLocations() {
 		Connection conn = null;
-		ArrayList<ProjectLocations> lobj=new ArrayList<ProjectLocations>();
+		ArrayList<ProjectLocations> lobj = new ArrayList<ProjectLocations>();
 		try {
 			conn = connmgr.getConnection();
-			lobj=projectlocDao.getAllProjectLocations(conn);
+			lobj = projectlocDao.getAllProjectLocations(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -141,15 +141,17 @@ public class Control {
 		}
 		return lobj;
 	}
-	public boolean saveProjectLocation(String project_id,String location_id,String active) {
+
+	public boolean saveProjectLocation(String project_id, String location_id, String active) {
 		Connection conn = null;
-		boolean execute=false;
+		boolean execute = false;
 		try {
 			conn = connmgr.getConnection();
-			execute=projectlocDao.saveProjectLocation(Integer.parseInt(project_id), Integer.parseInt(location_id),Integer.parseInt(active) , conn);
+			execute = projectlocDao.saveProjectLocation(Integer.parseInt(project_id), Integer.parseInt(location_id),
+					Integer.parseInt(active), conn);
 		} catch (Exception e) {
-			
-		}finally {
+
+		} finally {
 			try {
 				if (conn != null) {
 					conn.close();
@@ -160,17 +162,17 @@ public class Control {
 		}
 		return execute;
 	}
-	
+
 	public ProjectLocations findProjectLocations(int id) {
 		Connection conn = null;
-		ProjectLocations obj=null;
+		ProjectLocations obj = null;
 		try {
 			conn = connmgr.getConnection();
-			obj=projectlocDao.getProjectLocation(id, conn);
-			
+			obj = projectlocDao.getProjectLocation(id, conn);
+
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if (conn != null) {
 					conn.close();
@@ -181,15 +183,56 @@ public class Control {
 		}
 		return obj;
 	}
+
 	public boolean deleteProjectLocation(int id) {
 		Connection conn = null;
-		boolean execute=false;
+		boolean execute = false;
 		try {
 			conn = connmgr.getConnection();
-			execute=projectlocDao.deleteProjectLocation(id, conn);
+			execute = projectlocDao.deleteProjectLocation(id, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+
+			}
+		}
+		return execute;
+	}
+
+	public Projects getProject(int id) {
+		Connection conn = null;
+		Projects obj = null;
+		try {
+			conn = connmgr.getConnection();
+			obj = projectDao.getProject(id, conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+
+			}
+		}
+		return obj;
+	}
+	
+	public boolean updateProject(int id,String title) {
+		Connection conn = null;
+		boolean execute = false;
+		try {
+			conn = connmgr.getConnection();
+			execute = projectDao.updateProject(id, title, conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
 				if (conn != null) {
 					conn.close();

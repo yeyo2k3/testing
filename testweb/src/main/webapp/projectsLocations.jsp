@@ -67,8 +67,8 @@ body {
 				</tr>
 			</tbody>
 		</table>
-		
-		<table id="customers" width="100%" cellpadding="2" cellspacing="1">
+
+		<table id="customers">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -82,7 +82,7 @@ body {
 			<tbody>
 				<s:iterator var="list_project_locations" value="projectLocationList">
 					<tr>
-						<td><s:property value="id" /></td>
+						<td><a href="initializeEdit.action?idproject=<s:property value="project.getid"/>"><s:property value="id" /></a></td>
 						<td><s:property value="project.getProject_title" /></td>
 						<td><s:property value="location.name" /></td>
 						<td><s:property value="location.loc_element_type.name" /></td>

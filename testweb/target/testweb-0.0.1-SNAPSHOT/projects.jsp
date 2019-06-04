@@ -8,20 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<s:form action="actionlistingProjects">
-		<h1>Testing Project.</h1>
+	<s:form action="actionEditProjects">
 		<table>
-			<tr>				
-				<td><s:select label="Location" headerKey="-1"
-						headerValue="--- Select Project---" list="listofLocations"
-						listKey="id" listValue="project_title" name="selectedProject" />
-				</td>
-				<td><s:select label="Project" headerKey="-1"
-						headerValue="--- Select Project---" list="listofProjects"
-						listKey="id" listValue="project_title" name="selectedProject" />
-				</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td><s:textfield label="Project ID" name="project_id"></s:textfield>
+					</td>
+					<td><s:textarea label="Project Title" name="project_name"></s:textarea>
+					</td>
+				</tr>
+				<tr>
+					<td><s:submit value="Save" /> <s:submit
+							action="actionClearEditProjects" value="Clear" /></td>
+				</tr>
+			</tbody>
 		</table>
 	</s:form>
+
 </body>
 </html>
